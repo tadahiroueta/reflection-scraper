@@ -1,0 +1,190 @@
+[
+	{
+		"name": "Action Films",
+		"id": 1365
+	},
+	{
+		"name": "Anime Films",
+		"id": 3063
+	},
+	{
+		"name": "Black Stories Films",
+		"id": 81305957
+	},
+	{
+		"name": "Classics Films",
+		"id": 31574
+	},
+	{
+		"name": "Comedies Films",
+		"id": 6548
+	},
+	{
+		"name": "Crime Films",
+		"id": 5824
+	},
+	{
+		"name": "Cult Films",
+		"id": 7627
+	},
+	{
+		"name": "Documentaries Films",
+		"id": 2243108
+	},
+	{
+		"name": "Dramas Films",
+		"id": 5763
+	},
+	{
+		"name": "Faith & Spirituality Films",
+		"id": 26835
+	},
+	{
+		"name": "Fantasy Films",
+		"id": 9744
+	},
+	{
+		"name": "Horror Films",
+		"id": 8711
+	},
+	{
+		"name": "Independent Films",
+		"id": 7077
+	},
+	{
+		"name": "International Films",
+		"id": 78367
+	},
+	{
+		"name": "Kids & Family Films",
+		"id": 783
+	},
+	{
+		"name": "LGBTQ Films",
+		"id": 5977
+	},
+	{
+		"name": "Music & Musicals Films",
+		"id": 52852
+	},
+	{
+		"name": "Romance Films",
+		"id": 8883
+	},
+	{
+		"name": "Sci-Fi Films",
+		"id": 3276033
+	},
+	{
+		"name": "Shorts Films",
+		"id": 3345391
+	},
+	{
+		"name": "Sports Films",
+		"id": 4370
+	},
+	{
+		"name": "Stand-up Comedy Films",
+		"id": 11559
+	},
+	{
+		"name": "Thriller Films",
+		"id": 8933
+	},
+	{
+		"name": "2022 Netflix Emmys Programmes",
+		"id": 81614964
+	},
+	{
+		"name": "Action & Adventure Programmes",
+		"id": 10673
+	},
+	{
+		"name": "Anime Programmes",
+		"id": 6721
+	},
+	{
+		"name": "Black Stories Programmes",
+		"id": 81305957
+	},
+	{
+		"name": "British Programmes",
+		"id": 52117
+	},
+	{
+		"name": "Classic & Cult Programmes",
+		"id": 2244733
+	},
+	{
+		"name": "Comedies Programmes",
+		"id": 10375
+	},
+	{
+		"name": "Crime Programmes",
+		"id": 26146
+	},
+	{
+		"name": "Docuseries Programmes",
+		"id": 10105
+	},
+	{
+		"name": "Dramas Programmes",
+		"id": 11714
+	},
+	{
+		"name": "Horror Programmes",
+		"id": 83059
+	},
+	{
+		"name": "International Programmes",
+		"id": 1195213
+	},
+	{
+		"name": "K-Dramas Programmes",
+		"id": 2638104
+	},
+	{
+		"name": "Kids Programmes",
+		"id": 27346
+	},
+	{
+		"name": "LGBTQ Programmes",
+		"id": 65263
+	},
+	{
+		"name": "Mysteries Programmes",
+		"id": 4366
+	},
+	{
+		"name": "Reality Programmes",
+		"id": 9833
+	},
+	{
+		"name": "Romance Programmes",
+		"id": 26156
+	},
+	{
+		"name": "Sci-Fi & Fantasy Programmes",
+		"id": 1372
+	},
+	{
+		"name": "Science & Nature Programmes",
+		"id": 52780
+	},
+	{
+		"name": "Spanish-language Programmes",
+		"id": 67675
+	},
+	{
+		"name": "Stand-up & Chat Shows Programmes",
+		"id": 1516534
+	},
+	{
+		"name": "Teen Programmes",
+		"id": 60951
+	},
+	{
+		"name": "Thriller Programmes",
+		"id": 89811
+	}
+]
