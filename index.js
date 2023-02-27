@@ -8,11 +8,6 @@ const genres = require("./data/genres.json");
 const cookies = require("./data/cookies.json");
 const countries = require("./data/counties.json");
 
-const FILENAME = {
-    AVAILABILITY: "./data/availability.json",
-    THUMBNAILS: "./data/thumbnails.json"
-}
-
 /**
  * Scrapes titles from all countries
  * 
