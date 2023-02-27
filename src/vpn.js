@@ -3,7 +3,7 @@ const { execSync } = require('child_process'); // terminal library
 const sleep = async ms => new Promise(resolve => setTimeout(resolve, ms))
 
 /**
- * @returns {string} IP address
+ * @returns {String} IP address
  */
 const ip = () => {
     const stdout = execSync("ipconfig").toString()
@@ -14,8 +14,8 @@ const ip = () => {
 /**
  * Connect to a country's VPN
  * 
- * @param {string} homeIP
- * @param {string} country
+ * @param {String} homeIP
+ * @param {String} country
  * @throws {Error} if failed to connect to VPN server
  */
 const connect = async (homeIP, country) => {

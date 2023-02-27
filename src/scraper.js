@@ -13,7 +13,7 @@ const DELAYS = {
  * Scrapes all ids and thumbnails from one genre
  * 
  * @param {Object} page Chromium page by puppeteer
- * @param {string} genre
+ * @param {String} genre
  * @returns {Object} titles { name: thumbnail }
  */
 const scrapeGenre = async (page, genre) => {

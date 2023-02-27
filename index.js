@@ -1,7 +1,7 @@
 const cliProgress = require("cli-progress");
-const { writeFileSync} = require("fs");
 
 const scrape = require("./src/scraper");
+const upload = require("./src/mongodb");
 const { ip, connect, disconnect } = require("./src/vpn");
 
 const genres = require("./data/genres.json");
@@ -77,8 +77,11 @@ const thumbnails = titles => {
 
 (async () => {
     const titles = await titles()
-    
-    writeFileSync(FILENAME.AVAILABILITY, JSON.stringify(availability(titles)))
-    writeFileSync(FILENAME.THUMBNAILS, JSON.stringify(thumbnails(titles)))
     console.log("Scraped successfully.")
+    
+    console.log("Uploading to database...")
+    await upload("availability", availability(titles))
+    console.log("Uploaded availability.")
+    await upload("thumbnails", thumbnails(titles))
+    console.log("Uploaded thumbnails.")
 })();
