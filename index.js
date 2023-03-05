@@ -14,6 +14,7 @@ const countries = require("./data/countries.json");
  * @return {Object} { country: { name: thumbnail } }
  */
 const getTitles = async () => {
+    disconnect()
     const homeIP = ip() // getting ip to check when vpn is disconnected
 
     // progress bar
