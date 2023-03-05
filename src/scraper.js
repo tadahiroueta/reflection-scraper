@@ -1,9 +1,12 @@
 const { launch } = require('puppeteer');
 
-const IS_HEADLESS = false // set to false to see the browser while developing
 const DELAY = 5000 // time to wait for more titles to load
-const SELECTOR = ".boxart-rounded"
 const WAIT_OPTIONS = { waitUntil: 'networkidle2', timeout: 0 } // no timeout; wait until network is idle indefinitely
+const SELECTOR = {
+    TITLE: ".boxart-rounded",
+    PROFILE: ".profiles-gate-container > div > div > ul > li:nth-child(4) > div > a > div > div"
+}
+
 
 /**
  * Scrapes all ids and thumbnails from one genre
@@ -14,6 +17,8 @@ const WAIT_OPTIONS = { waitUntil: 'networkidle2', timeout: 0 } // no timeout; wa
  */
 const scrapeGenre = async (page, genre) => {
     await page.goto(`https://www.netflix.com/browse/genre/${genre}?so=su`, WAIT_OPTIONS);
+    try { await page.click(SELECTOR.PROFILE, WAIT_OPTIONS) } // click right profile
+    catch (error) {}
 
     // go to the bottom of the page to load all titles
     while (true) {
@@ -38,7 +43,7 @@ const scrapeGenre = async (page, genre) => {
             }
             return titles
         },
-        SELECTOR
+        SELECTOR.TITLE
 )}
 
 /**

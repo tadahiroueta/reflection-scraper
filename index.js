@@ -23,7 +23,14 @@ const getTitles = async () => {
     const titles = {}
     for (const country of countries) {
         try { await connect(homeIP, country) }
-        catch (error) { continue } // skip country when failed to connect to VPN
+
+        // skip country when failed to connect to VPN
+        catch (error) { 
+            console.log(`Couldn't connect to VPN. Skipping ${country}...`)
+            bar.increment()
+            
+            continue
+        } 
 
         // try scraping 3 times
         for (let i = 0; i < 3; i++) {
@@ -51,9 +58,9 @@ const getTitles = async () => {
  */
 const getAvailability = titles => {
     const availability = {}
-    for (const country of titles) for (const title of country) {
-        if (!availability[title]) availability[title] = [] // first occurence
-        availability[title].push(country)
+    for (const [country, countryTitles] of Object.entries(titles)) for (const name of Object.keys(countryTitles)) {
+        if (!availability[name]) availability[name] = [] // first occurence
+        availability[name].push(country)
     }
     return availability
 }
@@ -66,7 +73,7 @@ const getAvailability = titles => {
  */
 const getThumbnails = titles => {
     let thumbnails = {}
-    for (const country of titles) thumbnails = { ...thumbnails, ...country }
+    for (const countryTitles of Object.values(titles)) thumbnails = { ...thumbnails, ...countryTitles }
     return thumbnails
 }
 
@@ -79,4 +86,5 @@ const getThumbnails = titles => {
     console.log("Uploaded availability.")
     await upload("thumbnails", getThumbnails(titles))
     console.log("Uploaded thumbnails.")
+    process.exit()
 })();
