@@ -1,6 +1,6 @@
 const { MongoClient } = require("mongodb");
 
-const uri = require("./data/mongoURI.json")
+const uri = require("../data/mongoURI.json")
 
 const DATABASE = "reflection-database"
 
@@ -11,7 +11,7 @@ const DATABASE = "reflection-database"
  * @param {String} collection "availability" or "thumbnails"
  * @param {Object} update { name: data }
  */
-export default async (collection, update) => {
+const upload = async (collection, update) => {
 
     const client = new MongoClient(uri);
     try { 
@@ -25,3 +25,6 @@ export default async (collection, update) => {
     }})))}
     finally { await client.close() } // no matter what
 }
+
+// for older versions of node, I guess
+module.exports = upload

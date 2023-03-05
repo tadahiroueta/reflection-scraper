@@ -6,14 +6,14 @@ const { ip, connect, disconnect } = require("./src/vpn");
 
 const genres = require("./data/genres.json");
 const cookies = require("./data/cookies.json");
-const countries = require("./data/counties.json");
+const countries = require("./data/countries.json");
 
 /**
  * Scrapes titles from all countries
  * 
  * @return {Object} { country: { name: thumbnail } }
  */
-const titles = async () => {
+const getTitles = async () => {
     const homeIP = ip() // getting ip to check when vpn is disconnected
 
     // progress bar
@@ -49,7 +49,7 @@ const titles = async () => {
  * @param {Object} titles 
  * @returns {Object} { title: [ country ] }
  */
-const availability = titles => {
+const getAvailability = titles => {
     const availability = {}
     for (const country of titles) for (const title of country) {
         if (!availability[title]) availability[title] = [] // first occurence
@@ -64,19 +64,19 @@ const availability = titles => {
  * @param {Object} titles
  * @returns {Object} { title: thumbnail }
  */
-const thumbnails = titles => {
+const getThumbnails = titles => {
     let thumbnails = {}
     for (const country of titles) thumbnails = { ...thumbnails, ...country }
     return thumbnails
 }
 
 (async () => {
-    const titles = await titles()
+    const titles = await getTitles()
     console.log("Scraped successfully.")
     
     console.log("Uploading to database...")
-    await upload("availability", availability(titles))
+    await upload("availability", getAvailability(titles))
     console.log("Uploaded availability.")
-    await upload("thumbnails", thumbnails(titles))
+    await upload("thumbnails", getThumbnails(titles))
     console.log("Uploaded thumbnails.")
 })();
