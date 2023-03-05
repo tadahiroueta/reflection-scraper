@@ -13,7 +13,7 @@ const DELAY = 5000 // time to wait for more titles to load
  * 
  * @param {Object} page Chromium page by puppeteer
  * @param {String} genre
- * @returns {Object} titles { name: thumbnail }
+ * @returns {Object} titles [ { name, thumbnail } ]
  */
 const scrapeGenre = async (page, genre) => {
     await page.goto(`https://www.netflix.com/browse/genre/${genre}?so=su`, WAIT_OPTIONS);
@@ -32,19 +32,7 @@ const scrapeGenre = async (page, genre) => {
             const names = Array.from(document.querySelectorAll(selector.name));
             const thumbnails = Array.from(document.querySelectorAll(selector.thumbnail));
 
-            return names = names.map((name, i) => ({ [name.innerText]: thumbnails[i].src }))
-
-            const titles = {}
-
-            const titleElements = Array.from(document.querySelectorAll(selector));
-            
-            for (const title of titleElements) {
-                const name = title.querySelector("div > p").innerText;
-                const thumbnail = title.querySelector("img").src;
-
-                titles[name] = thumbnail;
-            }
-            return titles
+            return names.map((name, i) => ({ [name.innerText]: thumbnails[i].src }))
         },
         SELECTORS
 )}
@@ -54,7 +42,7 @@ const scrapeGenre = async (page, genre) => {
  * 
  * @param {Object[]} cookies 
  * @param {string[]} genres the url slugs of genres
- * @returns {Object} titles { name: thumbnail }
+ * @returns {Object} titles [ { name, thumbnail } ]
  */
 const scrape = async (cookies, genres) => {
     const browser = await launch({ handleSIGINT: false, headless: false }); //  let me handle errors
@@ -62,13 +50,12 @@ const scrape = async (cookies, genres) => {
     await page.setCookie(...cookies);
 
     let titles = []
-    // merging objects
     for (const genre of genres) {
         const genreTitles = await scrapeGenre(page, genre)
         console.log(genreTitles)
-        titles = { ...titles, genreTitles }
+        titles = [ ...titles, genreTitles ]
     }
-    return titles // MAKE THE OBJECTS INTO LISTS
+    return titles.filter((title, i) => titles.indexOf(title) === i) // remove duplicates
 }
 
 // for older versions of node, I guess
