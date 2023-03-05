@@ -54,7 +54,7 @@ const scrapeGenre = async (page, genre) => {
  * @returns {Object} titles { name: thumbnail }
  */
 const scrape = async (cookies, genres) => {
-    const browser = await launch({ handleSIGINT: false, headless: false }); //  let me handle errors
+    const browser = await launch({ handleSIGINT: false }); //  let me handle errors
     const page = await browser.newPage();
     await page.setCookie(...cookies);
 
