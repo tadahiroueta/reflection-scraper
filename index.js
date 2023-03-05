@@ -46,14 +46,14 @@ const getTitles = async () => {
 /**
  * Processes availability of titles (which countries have them)
  * 
- * @param {Object[]} titles 
+ * @param {Object} titles 
  * @returns {Object} { title: [ country ] }
  */
 const getAvailability = titles => {
     const availability = {}
-    for (const country of titles) for (const { name } of country) {
-        if (!availability[name]) availability[name] = [] // first occurence
-        availability[name].push(country)
+    for (const country of titles) for (const title of country) {
+        if (!availability[title]) availability[title] = [] // first occurence
+        availability[title].push(country)
     }
     return availability
 }
@@ -66,7 +66,7 @@ const getAvailability = titles => {
  */
 const getThumbnails = titles => {
     let thumbnails = {}
-    for (const { name, thumbnail } of titles) thumbnails[name] = thumbnail
+    for (const country of titles) thumbnails = { ...thumbnails, ...country }
     return thumbnails
 }
 
