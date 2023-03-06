@@ -51,16 +51,19 @@ const scrapeGenre = async (page, genre) => {
  * 
  * @param {Object[]} cookies 
  * @param {string[]} genres the url slugs of genres
+ * @param {Object} localBar cli-progress multibar
  * @returns {Object} titles { name: thumbnail }
  */
-const scrape = async (cookies, genres) => {
+const scrape = async (cookies, genres, localBar) => {
     const browser = await launch({ handleSIGINT: false }); //  let me handle errors
     const page = await browser.newPage();
     await page.setCookie(...cookies);
 
     let titles = []
-    // merging objects
-    for (const genre of genres) titles = { ...titles, ...await scrapeGenre(page, genre) }
+    for (const genre of genres) {
+        titles = { ...titles, ...await scrapeGenre(page, genre) } // merging objects
+        localBar.increment()
+    }
     return titles // MAKE THE OBJECTS INTO LISTS
 }
 

@@ -18,8 +18,8 @@ const getTitles = async () => {
     const homeIP = ip() // getting ip to check when vpn is disconnected
 
     // progress bar
-    const bar = new cliProgress.SingleBar({}, cliProgress.Presets.shades_classic);
-    bar.start(countries.length, 0);
+    const multibar = new cliProgress.MultiBar({ hideCursor: true }, cliProgress.Presets.shades_classic)
+    const globalBar = multibar.create(countries.length, 0)
 
     const titles = {}
     for (const country of countries) {
@@ -28,26 +28,31 @@ const getTitles = async () => {
         // skip country when failed to connect to VPN
         catch (error) { 
             console.log(`Couldn't connect to VPN. Skipping ${country}...`)
-            bar.increment()
+            globalBar.increment()
             
             continue
         } 
 
         // try scraping 3 times
         for (let i = 0; i < 3; i++) {
-            try { titles[country] = await scrape(cookies, genres) }
+    
+            const localBar = multibar.create(genres.length, 0, { clearOnComplete: true })
+        
+            try { titles[country] = await scrape(cookies, genres, localBar) }
             catch (error) { 
+                multibar.remove(localBar)
                 console.log(`Failed to scrape titles in ${country}.`)
                 console.error(error)
                 console.log(i < 2 ? "Retrying..." : "Skipping...")
                 continue
             }
+            multibar.remove(localBar)
             break
         }
         disconnect()
-        bar.increment()
+        globalBar.increment()
     }
-    bar.stop()
+    multibar.stop()
     return titles
 }
 
