@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Reflection Scraper
 *A scraper for available Netflix titles across different countries*
 
@@ -40,3 +41,9 @@ It relies mostly on a Puppeteer web crawler and OpenVPN with a VPN subscription.
 <br><br><br>
 
 Contact me if you have any questions.
+=======
+# reflection-scraper
+
+### The only way to learn to code is to write a lot of code
+###                                                - Aristoteles
+>>>>>>> b8403143ecf1be59ee5602ae3176ce767965c29b
