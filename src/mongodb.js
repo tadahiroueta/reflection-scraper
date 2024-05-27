@@ -2,7 +2,7 @@ const { MongoClient } = require("mongodb");
 
 const uri = require("../data/mongoURI.json")
 
-const DATABASE = "reflection-database"
+const DATABASE = require("../data/database-name.json")
 
 
 /**
