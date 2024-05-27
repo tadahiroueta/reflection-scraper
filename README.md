@@ -15,7 +15,7 @@
 ### Pre-programmed VPN
 
 The scraper uses OpenVPN GUI to connect to different countries and check their Netflix titles
-<img src="https://yqintl.alicdn.com/1ddfc3fd86fd63a092e5eb8ee22aba4cadff07bf.png" alt="open-vpn" width="50%" />
+<img src="https://github.com/tadahiroueta/reflection-scraper/blob/master/samples/openvpn.png" alt="open-vpn" width="50%" />
 
 ### Scrape ***all*** Netflix titles
 The Puppeteer headless browser runs over every Netflix genre to get every title, thumbnail, and availability by country
