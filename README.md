@@ -17,7 +17,7 @@
 The scraper uses OpenVPN GUI to connect to different countries and check their Netflix titles
 
 <br>
-<img src="https://github.com/tadahiroueta/reflection-scraper/blob/master/samples/openvpn.png" alt="open-vpn" width="50%" />
+<img src="https://github.com/tadahiroueta/reflection-scraper/blob/master/samples/openvpn.png" alt="open-vpn" width="376rem" />
 <br>
 
 ### Scrape ***all*** Netflix titles
